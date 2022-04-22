@@ -25,6 +25,9 @@ const AddStoreModel = mongoose.Schema({
         required: true,
         type: String,
     },
+    LogoFilePath: {
+        type: String,
+    },
     Status: {
         required: true,
         default: false,
@@ -32,4 +35,4 @@ const AddStoreModel = mongoose.Schema({
     }
 });
 
-export default mongoose.model('AddStoreModel',AddStoreModel);
+export default mongoose.model('AddStoreModel', AddStoreModel);

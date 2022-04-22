@@ -1,11 +1,11 @@
 import AddStoreModel from "../Models/addStoreModel.js";
 import addStoreDB from "../Repositories/addStore.repository.js";
 
-const addStore = async (req, res) => {
+const addStore = async (req, res, filePath) => {
     let status;
-    console.log("Status.............................................."+req.body.status);
-    if(req.body.status=="on"){
-        status=true;
+    console.log("Status.............................................." + req.body.status);
+    if (req.body.status == "on") {
+        status = true;
     }
     const save = new AddStoreModel({
         "StoreName": req.body.storeName,
@@ -14,7 +14,7 @@ const addStore = async (req, res) => {
         "Country": req.body.country,
         "PostalCode": req.body.postalCode,
         "Address": req.body.address,
-        // "LogoFilePath":,
+        "LogoFilePath": filePath,
         "Status": status
     });
     const saved = await addStoreDB(save);

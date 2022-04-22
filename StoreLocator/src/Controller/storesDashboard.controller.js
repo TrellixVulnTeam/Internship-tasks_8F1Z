@@ -1,5 +1,5 @@
-const dashboard=(req,res)=>{
-res.render('stores');
+const dashboard = async (req, res) => {
+    res.render('stores');
 };
 
-export {dashboard};
+export { dashboard };
