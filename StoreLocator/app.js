@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
 import { } from 'dotenv/config';
+import session from 'express-session';
 //require('dotenv').config();
 
 import sequelize from './src/helpers/databaseConnection.js';
@@ -16,8 +17,15 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(session({
+    secret: process.env.SESSION_KEY,
+    resave: true,
+    saveUninitialized: true
+}));
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
 app.use(express.static('./src/public'));

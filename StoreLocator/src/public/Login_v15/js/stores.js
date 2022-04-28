@@ -77,14 +77,15 @@ $('#editModal').on('show.bs.modal', function (event) {
     }
 });
 
-$('#status').on('change',()=>{
-    if(!(this.checked)){
-        $('#status').val("");
-    }
-    else{
-        $('#status').val("on");
-    }
-});
+$('#status').change(
+    function () {
+        if (this.checked) {
+            $("#status").val("on");
+        }
+        else {
+            $("#status").val("");
+        }
+    });
 
 const updateStoreBtn = (id) => {
     let s;
@@ -102,6 +103,7 @@ const updateStoreBtn = (id) => {
         "country":$('#country').val(),
         "postalCode":$('#postalCode').val(),
         "address":$('#address').val(),
+        "logo":$('#logo').files,
         "status":s,
     };
     $.ajax({

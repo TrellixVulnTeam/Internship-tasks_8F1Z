@@ -1,5 +1,5 @@
 import addStore from './../Services/addStore.services.js';
-import { filePath } from '../utils/fileUpload.js';
+import { filePath } from '../middlewares/fileUpload.js';
 
 const addStoreGet = (req, res) => {
     return res.render('addStore');

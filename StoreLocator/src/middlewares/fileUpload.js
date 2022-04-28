@@ -8,6 +8,8 @@ const storage = multer.diskStorage({
         cb(null, '../StoreLocator/src/public/Login_v15/images');
     },
     filename: function (req, file, cb) {
+        console.log("multer......");
+        console.log(file.originalname);
         filePath = Date.now() + path.extname(file.originalname);
         cb(null, filePath);
     }
