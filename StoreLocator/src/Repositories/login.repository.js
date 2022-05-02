@@ -1,5 +1,4 @@
 import bcryptjs from "bcryptjs";
-import { Sequelize } from "sequelize";
 import userModel from "../Models/userModel.js";
 
 const loginCredential = async (emailReq, passwordReq) => {
@@ -20,23 +19,9 @@ const loginCredential = async (emailReq, passwordReq) => {
         }
     }
     else{
-        return 'Email does not exists';
+        return 'Email does not exists'; //express validator winstorlogger nodejs lifecycle
     }
 
-};
-
-const passwordCorrect = async (emailReq, passwordReq) => {
-    const user = await userModel.findOne(
-        { where: { email: emailReq } }
-    );
-    console.log("User:"+user);
-    if (user != null) {
-        const password = await bcryptjs.compare(passwordReq, user.password);
-        console.log("password:"+password);
-        if (password != null) {
-            return true;
-        }
-    }
 };
 
 export { loginCredential};

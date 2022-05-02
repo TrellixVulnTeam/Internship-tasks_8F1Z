@@ -117,7 +117,28 @@ const updateStoreBtn = (id) => {
         async: true,
         cache: false,
         success: function (data) {
-            if (data) {
+            console.log(data);
+            if (data.validationError) {
+                $('#storeName').val(data.req.storeName);
+                $('#city').val(data.req.city);
+                $('#state').val(data.req.state);
+                $('#country').val(data.req.country);
+                $('#postalCode').val(data.req.postalCode);
+                $('#address').val(data.req.address);
+                $('#storeVal').html(data.storeVal);
+                $('#cityVal').html(data.cityVal);
+                $('#stateVal').html(data.stateVal);
+                $('#countryVal').html(data.countryVal);
+                $('#addVal').html(data.addVal);
+                $('#postalVal').html(data.postalVal);
+            }
+            else{
+                $('#storeVal').html('');
+                $('#cityVal').html('');
+                $('#stateVal').html('');
+                $('#countryVal').html('');
+                $('#addVal').html('');
+                $('#postalVal').html('');
                 $('#editModal').modal('hide').data('bs.modal', null);
                 storeTable.ajax.reload(null, false);
             }
